@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background: #000;
+  color: #ff3b3b; /* основной красный текст */
+  font-family: "Press Start 2P", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#game {
+  white-space: pre-wrap;
+  font-size: 12px;          /* мелкий пиксельный текст */
+  line-height: 1.4;
+  max-width: 960px;
+  padding: 16px 20px;
+  border: 2px solid #ff0000;
+  box-shadow:
+    0 0 12px #ff0000,
+    0 0 30px #4a0000;
+  text-shadow:
+    0 0 4px #ff1a1a,
+    0 0 8px #a30000;
+  background: radial-gradient(circle at top, #1a0000 0, #000 55%);
+}
+
+@media (max-width: 600px) {
+  #game {
+    font-size: 10px;
+    padding: 12px 14px;
+    max-width: 100%;
+    margin: 0 8px;
+  }
+}
+
+/* можно для будущего использовать классы, если решим печатать HTML, а не чистый текст */
+.accent {
+  color: #ff5555;
+}
+
+.dim {
+  color: #aa3030;
+}
