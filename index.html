@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Text Pixel Game</title>
+  <style>
+    body {
+      background: #000;
+      color: #0f0;
+      font-family: monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    #game {
+      white-space: pre;
+    }
+  </style>
+</head>
+<body>
+  <div id="game"></div>
+  <script>
+    const width = 10;
+    const height = 5;
+    let playerX = 2;
+    let playerY = 2;
+
+    function render() {
+      let out = "";
+      for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+          if (x === playerX && y === playerY) out += "@";
+          else out += ".";
+        }
+        out += "\n";
+      }
+      document.getElementById("game").textContent = out;
+    }
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "w") playerY = Math.max(0, playerY - 1);
+      if (e.key === "s") playerY = Math.min(height - 1, playerY + 1);
+      if (e.key === "a") playerX = Math.max(0, playerX - 1);
+      if (e.key === "d") playerX = Math.min(width - 1, playerX + 1);
+      render();
+    });
+
+    render();
+  </script>
+</body>
+</html>
