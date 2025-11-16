@@ -10,43 +10,164 @@ html, body {
 
 body {
   background: #000;
-  color: #ff3b3b; /* основной красный текст */
-  font-family: "Press Start 2P", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #ff3b3b;
+  font-family: "Press Start 2P", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 #game {
-  white-space: pre-wrap;
-  font-size: 12px;          /* мелкий пиксельный текст */
-  line-height: 1.4;
-  max-width: 960px;
+  width: 960px;
+  max-width: 100%;
   padding: 16px 20px;
   border: 2px solid #ff0000;
+  background: radial-gradient(circle at top, #1a0000 0, #000 60%);
   box-shadow:
-    0 0 12px #ff0000,
-    0 0 30px #4a0000;
+    0 0 8px #ff0000,
+    0 0 24px #4a0000;
+}
+
+#status {
+  font-size: 10px;
+  margin-bottom: 8px;
+  text-shadow: 0 0 4px #ff1a1a;
+}
+
+/* персонажи */
+
+#characters {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 12px;
+}
+
+.character {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.name {
+  font-size: 8px;
+  text-transform: uppercase;
+  color: #ff7777;
+}
+
+/* простые пиксельные “спрайты” */
+
+.sprite {
+  width: 72px;
+  height: 72px;
+  image-rendering: pixelated;
+  border: 2px solid #ff0000;
+  box-shadow:
+    0 0 6px #ff0000,
+    0 0 12px #3a0000;
+}
+
+/* бармен: чёрный фартук, красное лицо */
+
+.sprite-bartender {
+  background:
+    /* голова */
+    linear-gradient(#ff5555, #ff5555) 50% 18% / 40% 20% no-repeat,
+    /* тело */
+    linear-gradient(#330000, #330000) 50% 55% / 60% 40% no-repeat,
+    /* стойка */
+    linear-gradient(#220000, #220000) 0 100% / 100% 18% no-repeat;
+}
+
+/* гость: чуть другая палитра */
+
+.sprite-guest {
+  background:
+    /* голова */
+    linear-gradient(#ff9999, #ff9999) 50% 20% / 42% 22% no-repeat,
+    /* тело */
+    linear-gradient(#550000, #550000) 50% 58% / 60% 42% no-repeat;
+}
+
+/* диалоговое окно */
+
+#dialog-container {
+  margin-bottom: 8px;
+}
+
+#dialog-box {
+  border: 2px solid #ff0000;
+  padding: 10px 12px;
+  background: #0a0000;
+  position: relative;
+  min-height: 80px;
+}
+
+/* “хвостик” облака */
+
+#dialog-box::after {
+  content: "";
+  position: absolute;
+  left: 18%;
+  bottom: -10px;
+  width: 16px;
+  height: 10px;
+  background:
+    linear-gradient(45deg, transparent 0, transparent 50%, #ff0000 50%, #ff0000 100%);
+}
+
+#dialog-text {
+  font-size: 11px;
+  line-height: 1.4;
+  white-space: pre-wrap;
   text-shadow:
     0 0 4px #ff1a1a,
     0 0 8px #a30000;
-  background: radial-gradient(circle at top, #1a0000 0, #000 55%);
 }
+
+/* варианты выбора */
+
+#choices {
+  font-size: 10px;
+  margin-bottom: 6px;
+}
+
+#choices div {
+  margin-bottom: 2px;
+}
+
+#hint {
+  font-size: 8px;
+  color: #ff9999;
+}
+
+/* адаптив */
 
 @media (max-width: 600px) {
   #game {
-    font-size: 10px;
-    padding: 12px 14px;
-    max-width: 100%;
-    margin: 0 8px;
+    padding: 10px 12px;
   }
-}
 
-/* можно для будущего использовать классы, если решим печатать HTML, а не чистый текст */
-.accent {
-  color: #ff5555;
-}
+  #status {
+    font-size: 8px;
+  }
 
-.dim {
-  color: #aa3030;
+  #dialog-text {
+    font-size: 9px;
+  }
+
+  #choices {
+    font-size: 8px;
+  }
+
+  .sprite {
+    width: 56px;
+    height: 56px;
+  }
+
+  #dialog-box::after {
+    left: 22%;
+  }
 }
