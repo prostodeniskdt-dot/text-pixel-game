@@ -1,56 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Text Pixel Game</title>
-  <style>
-    body {
-      margin: 0;
-      background: #000;
-      color: #0f0;
-      font-family: monospace;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    #game {
-      white-space: pre;
-      font-size: 32px;      /* делаем крупнее */
-      line-height: 1;       /* плотнее строки */
-      text-shadow: 0 0 8px #0f0; /* лёгкое “свечение” */
-    }
-  </style>
+  <title>BAR / 7 NIGHTS</title>
+
+  <!-- Пиксельный шрифт -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div id="game"></div>
-  <script>
-    const width = 20;   // побольше поле
-    const height = 10;
-    let playerX = 4;
-    let playerY = 4;
 
-    function render() {
-      let out = "";
-      for (let y = 0; y < height; y++) {
-        for (let x = 0; x < width; x++) {
-          if (x === playerX && y === playerY) out += "@";
-          else out += ".";
-        }
-        out += "\n";
-      }
-      document.getElementById("game").textContent = out;
-    }
-
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "w") playerY = Math.max(0, playerY - 1);
-      if (e.key === "s") playerY = Math.min(height - 1, playerY + 1);
-      if (e.key === "a") playerX = Math.max(0, playerX - 1);
-      if (e.key === "d") playerX = Math.min(width - 1, playerX + 1);
-      render();
-    });
-
-    render();
-  </script>
+  <script src="js/guests.js"></script>
+  <script src="js/game.js"></script>
 </body>
 </html>
