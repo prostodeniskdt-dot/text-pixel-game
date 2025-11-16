@@ -67,6 +67,47 @@ body {
   box-shadow:
     0 0 6px #ff0000,
     0 0 12px #3a0000;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Анимации спрайтов */
+@keyframes blink {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.95); }
+}
+
+@keyframes happy {
+  0%, 100% { transform: translateY(0) scale(1); }
+  25% { transform: translateY(-5px) scale(1.05); }
+  50% { transform: translateY(0) scale(1); }
+  75% { transform: translateY(-3px) scale(1.02); }
+}
+
+@keyframes sad {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+}
+
+@keyframes think {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.2); }
+}
+
+.animate-blink {
+  animation: blink 0.3s ease 2;
+}
+
+.animate-happy {
+  animation: happy 0.6s ease;
+}
+
+.animate-sad {
+  animation: sad 0.5s ease;
+}
+
+.animate-think {
+  animation: think 1s ease infinite;
 }
 
 /* бармен: чёрный фартук, красное лицо */
@@ -103,6 +144,8 @@ body {
   background: #0a0000;
   position: relative;
   min-height: 80px;
+  transition: all 0.3s ease;
+  animation: dialog-glow 3s ease-in-out infinite;
 }
 
 /* “хвостик” облака */
@@ -136,11 +179,100 @@ body {
 
 #choices div {
   margin-bottom: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+
+#choices div:hover {
+  background: rgba(255, 0, 0, 0.1);
+  text-shadow: 0 0 8px #ff1a1a;
+  transform: translateX(4px);
+}
+
+.choice {
+  position: relative;
 }
 
 #hint {
   font-size: 8px;
   color: #ff9999;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+/* Частицы эффектов */
+.particle {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  animation: particle-fly 0.8s ease-out forwards;
+  box-shadow: 0 0 4px currentColor;
+}
+
+@keyframes particle-fly {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--vx), var(--vy)) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Попап достижений */
+.achievement-popup {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  background: #1a0000;
+  border: 2px solid #ff0000;
+  padding: 12px 20px;
+  font-size: 10px;
+  color: #ffdd00;
+  text-shadow: 0 0 8px #ffdd00;
+  box-shadow:
+    0 0 12px #ff0000,
+    0 0 24px #4a0000;
+  z-index: 10001;
+  opacity: 0;
+  transition: all 0.5s ease;
+  white-space: nowrap;
+}
+
+.achievement-popup.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  animation: achievement-bounce 0.5s ease;
+}
+
+@keyframes achievement-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0) scale(1); }
+  50% { transform: translateX(-50%) translateY(-10px) scale(1.1); }
+}
+
+/* Пульсирующее свечение для диалогового окна */
+@keyframes dialog-glow {
+  0%, 100% {
+    box-shadow: 
+      inset 0 0 10px rgba(255, 0, 0, 0.1),
+      0 0 8px rgba(255, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 
+      inset 0 0 15px rgba(255, 0, 0, 0.2),
+      0 0 12px rgba(255, 0, 0, 0.5);
+  }
 }
 
 /* адаптив */
