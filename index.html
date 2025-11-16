@@ -12,7 +12,30 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div id="game"></div>
+  <div id="game">
+    <div id="status"></div>
+
+    <div id="characters">
+      <div class="character bartender">
+        <div class="sprite sprite-bartender"></div>
+        <div class="name">Бармен</div>
+      </div>
+
+      <div class="character guest">
+        <div class="sprite sprite-guest"></div>
+        <div class="name" id="guest-name">Гость</div>
+      </div>
+    </div>
+
+    <div id="dialog-container">
+      <div id="dialog-box">
+        <div id="dialog-text"></div>
+      </div>
+    </div>
+
+    <div id="choices"></div>
+    <div id="hint"></div>
+  </div>
 
   <script src="js/guests.js"></script>
   <script src="js/game.js"></script>
