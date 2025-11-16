@@ -5,6 +5,7 @@
   <title>Text Pixel Game</title>
   <style>
     body {
+      margin: 0;
       background: #000;
       color: #0f0;
       font-family: monospace;
@@ -15,16 +16,19 @@
     }
     #game {
       white-space: pre;
+      font-size: 32px;      /* делаем крупнее */
+      line-height: 1;       /* плотнее строки */
+      text-shadow: 0 0 8px #0f0; /* лёгкое “свечение” */
     }
   </style>
 </head>
 <body>
   <div id="game"></div>
   <script>
-    const width = 10;
-    const height = 5;
-    let playerX = 2;
-    let playerY = 2;
+    const width = 20;   // побольше поле
+    const height = 10;
+    let playerX = 4;
+    let playerY = 4;
 
     function render() {
       let out = "";
